@@ -1,4 +1,5 @@
 from config import *
+import os
 import requests
 import sys
 
@@ -21,6 +22,10 @@ for ip_range in github_response['actions']:
     content += '\n'
     content += 'http_access allow ' + acl_name
 
-f = open(config_file_path, 'a')
+f = open(config_file_path, 'w')
 f.write(content)
 f.close()
+
+stream = os.popen('service squid restart')
+output = stream.read()
+print(output)
