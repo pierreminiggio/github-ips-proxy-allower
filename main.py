@@ -6,7 +6,7 @@ import sys
 github_request = requests.get('https://api.github.com/meta')
 
 if github_request.status_code != 200:
-    print('Error while fetching Github ips: Bad HTTP Code (' + github_request.status_code + ')')
+    print('Error while fetching Github ips: Bad HTTP Code (' + str(github_request.status_code) + ')')
     sys.exit()
 
 github_response = github_request.json()
